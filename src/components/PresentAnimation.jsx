@@ -3,6 +3,7 @@ import './PresentAnimation.css';
 
 const PresentAnimation = () => {
   const [currentFrame, setCurrentFrame] = useState(0);
+  const [showAnimation, setShowAnimation] = useState(true);
   const frames = [
     '/images/present-closed.png',    // Frame 1: Closed present
     '/images/present-opening.png',   // Frame 2: Opening present
@@ -11,11 +12,25 @@ const PresentAnimation = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentFrame((prevFrame) => (prevFrame + 1) % frames.length);
-    }, 2000); // Change frame every 2 seconds
+      setCurrentFrame((prevFrame) => {
+        if (prevFrame === frames.length - 1) {
+          clearInterval(interval);
+          // Hide the animation after a delay
+          setTimeout(() => {
+            setShowAnimation(false);
+          }, 1000); // Reduced from 2000 to 500ms
+          return prevFrame;
+        }
+        return prevFrame + 1;
+      });
+    }, 1000); // Reduced from 2000 to 500ms
 
     return () => clearInterval(interval);
   }, []);
+
+  if (!showAnimation) {
+    return null;
+  }
 
   return (
     <div className="present-container">

@@ -35,9 +35,9 @@ function App() {
 
   return (
     <div className="app">
+      <PresentAnimation />
       <div className="coming-soon">
         <h1>COMING SOON</h1>
-        <PresentAnimation />
         <div className="countdown">
           <div className="countdown-item">
             <span className="countdown-value">{timeLeft.days}</span>
