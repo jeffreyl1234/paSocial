@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import PresentAnimation from './components/PresentAnimation'
 
 function App() {
   const [timeLeft, setTimeLeft] = useState({
@@ -36,6 +37,7 @@ function App() {
     <div className="app">
       <div className="coming-soon">
         <h1>COMING SOON</h1>
+        <PresentAnimation />
         <div className="countdown">
           <div className="countdown-item">
             <span className="countdown-value">{timeLeft.days}</span>
