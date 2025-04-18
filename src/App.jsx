@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
 import './App.css'
 import PresentAnimation from './components/PresentAnimation'
-import FormPage from './pages/FormPage'
 
 function App() {
   const [timeLeft, setTimeLeft] = useState({
@@ -36,43 +34,30 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/form" element={<FormPage />} />
-        <Route path="/" element={
-          <div className="app">
-            <PresentAnimation />
-            <div className="coming-soon">
-              <button 
-                className="nav-button"
-                onClick={() => window.location.href = '/form'}
-              >
-                Go to Form
-              </button>
-              <h1>COMING SOON</h1>
-              <div className="countdown">
-                <div className="countdown-item">
-                  <span className="countdown-value">{timeLeft.days}</span>
-                  <span className="countdown-label">Days</span>
-                </div>
-                <div className="countdown-item">
-                  <span className="countdown-value">{timeLeft.hours}</span>
-                  <span className="countdown-label">Hours</span>
-                </div>
-                <div className="countdown-item">
-                  <span className="countdown-value">{timeLeft.minutes}</span>
-                  <span className="countdown-label">Minutes</span>
-                </div>
-                <div className="countdown-item">
-                  <span className="countdown-value">{timeLeft.seconds}</span>
-                  <span className="countdown-label">Seconds</span>
-                </div>
-              </div>
-            </div>
+    <div className="app">
+      <PresentAnimation />
+      <div className="coming-soon">
+        <h1>COMING SOON</h1>
+        <div className="countdown">
+          <div className="countdown-item">
+            <span className="countdown-value">{timeLeft.days}</span>
+            <span className="countdown-label">Days</span>
           </div>
-        } />
-      </Routes>
-    </Router>
+          <div className="countdown-item">
+            <span className="countdown-value">{timeLeft.hours}</span>
+            <span className="countdown-label">Hours</span>
+          </div>
+          <div className="countdown-item">
+            <span className="countdown-value">{timeLeft.minutes}</span>
+            <span className="countdown-label">Minutes</span>
+          </div>
+          <div className="countdown-item">
+            <span className="countdown-value">{timeLeft.seconds}</span>
+            <span className="countdown-label">Seconds</span>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 

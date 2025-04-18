@@ -5,9 +5,9 @@ const PresentAnimation = () => {
   const [currentFrame, setCurrentFrame] = useState(0);
   const [showAnimation, setShowAnimation] = useState(true);
   const frames = [
-    './images/present-closed.png',    // Frame 1: Closed present
-    './images/present-opening.png',   // Frame 2: Opening present
-    './images/present-open.png'       // Frame 3: Open present
+    '/images/present-closed.png',    // Frame 1: Closed present
+    '/images/present-opening.png',   // Frame 2: Opening present
+    '/images/present-open.png'       // Frame 3: Open present
   ];
 
   useEffect(() => {
@@ -18,12 +18,12 @@ const PresentAnimation = () => {
           // Hide the animation after a delay
           setTimeout(() => {
             setShowAnimation(false);
-          }, 500);
+          }, 1000); // Reduced from 2000 to 500ms
           return prevFrame;
         }
         return prevFrame + 1;
       });
-    }, 500);
+    }, 1000); // Reduced from 2000 to 500ms
 
     return () => clearInterval(interval);
   }, []);
