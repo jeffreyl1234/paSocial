@@ -1,5 +1,7 @@
+'use client';
+
 import { useState, useEffect } from 'react';
-import './PresentAnimation.css';
+import styles from './PresentAnimation.module.css';
 
 const PresentAnimation = () => {
   const [currentFrame, setCurrentFrame] = useState(0);
@@ -15,15 +17,14 @@ const PresentAnimation = () => {
       setCurrentFrame((prevFrame) => {
         if (prevFrame === frames.length - 1) {
           clearInterval(interval);
-          // Hide the animation after a delay
           setTimeout(() => {
             setShowAnimation(false);
-          }, 1000); // Reduced from 2000 to 500ms
+          }, 500);
           return prevFrame;
         }
         return prevFrame + 1;
       });
-    }, 1000); // Reduced from 2000 to 500ms
+    }, 500);
 
     return () => clearInterval(interval);
   }, []);
@@ -33,11 +34,11 @@ const PresentAnimation = () => {
   }
 
   return (
-    <div className="present-container">
+    <div className={styles.presentContainer}>
       <img 
         src={frames[currentFrame]} 
         alt={`Present frame ${currentFrame + 1}`}
-        className="present-image"
+        className={styles.presentImage}
       />
     </div>
   );
